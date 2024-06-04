@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="light_gray">#E0E0E0</color>
+    <color name="dark_gray">#808080</color>
+    <color name="faded_grey">#3F3F3F</color>
+    <color name="grey">#525252</color>
+    <color name="light_red">#FF7F7F</color>
+    <color name="light_blue">#ADD8E6</color>
+
+    <color name="bright_blue">#0096FF</color>
+    <color name="faded_yellow">#ECE3A1</color>
+    <color name="faded_brown">#F1DAB5</color>
+    <color name="light_brown">#B58863</color>
+    <color name="light_black">#2B2B2B</color>
+    <color name="faded_black">#222222</color>
+    <color name="faded_color1">#FFAAAA</color>
+    <color name="faded_color2">#AABBBB</color>
+    <color name="faded_color3">#CCAACC</color>
+    <color name="faded_color4">#AACCAA</color>
+    <color name="faded_color5">#FFCCAA</color>
+    <color name="faded_color6">#AACCBB</color>
+    <color name="faded_color7">#BBCCAA</color>
+    <color name="faded_color8">#AABBCC</color>
+    <color name="faded_color9">#DDDDAA</color>
+    <color name="faded_color10">#AADDCC</color>
+    <color name="faded_color11">#CCDDAA</color>
+    <color name="faded_color12">#AADDCC</color>
+
+</resources>

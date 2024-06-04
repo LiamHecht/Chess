@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="350sp"
+        android:background="@color/dark_gray"
+        android:layout_height="200sp"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:gravity="center_horizontal"
+        android:layout_centerInParent="true">
+
+    <!-- Button 1 with icon placeholder -->
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="@color/dark_gray"
+        android:drawableLeft="@drawable/baseline_flag_24"
+        android:text="Forfeit"
+        android:textSize="20sp"
+        android:textColor="@color/white" />
+
+    <!-- Button 2 with icon placeholder -->
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/dark_gray"
+            android:drawableLeft="@drawable/baseline_flag_24"
+            android:text="Draw"
+            android:textSize="20sp"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/dark_gray"
+            android:drawableLeft="@drawable/baseline_flag_24"
+            android:text="give 15 seconds"
+            android:textSize="20sp"
+            android:textColor="@color/white" />
+</LinearLayout>
+
+    </RelativeLayout>

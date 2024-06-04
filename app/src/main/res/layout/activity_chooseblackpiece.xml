@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200sp"
+    android:layout_height="500sp"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/queenPromotion"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:src="@drawable/bqueen"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"/>
+
+    <ImageView
+        android:id="@+id/rookPromotion"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:src="@drawable/bbishop"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"/>
+
+    <ImageView
+        android:id="@+id/bishopPromotion"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:src="@drawable/bknight"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"/>
+
+    <ImageView
+        android:id="@+id/knightPromotion"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:src="@drawable/brook"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"/>
+
+</LinearLayout>

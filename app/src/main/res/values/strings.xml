@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Chess</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+
+    <string-array name="levels">
+        <item>Beginner</item>
+        <item>Intermediate</item>
+        <item>Advanced</item>
+        <item>Expert</item>
+    </string-array>
+    <string-array name="side">
+        <item>white</item>
+        <item>black</item>
+        <item>random</item>
+
+    </string-array>
+    <string-array name="BotType">
+        <item>MinMax</item>
+        <item>StockFish</item>
+    </string-array>
+    <string-array name="Mode">
+        <item>Standard</item>
+    </string-array>
+    <string-array name="botlevel">
+        <item>level 1</item>
+        <item>level 2</item>
+        <item>level 3</item>
+        <item>level 4</item>
+    </string-array>
+
+
+</resources>

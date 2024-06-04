@@ -1,0 +1,208 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.LocalGameActivity">
+
+    <!-- Top Linear Layout with Timer TextView -->
+    <LinearLayout
+        android:id="@+id/topLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="90sp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/blackTakenPiecesLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="40sp"
+                android:layout_marginTop="12sp"
+                android:gravity="start"
+                android:orientation="horizontal" />
+
+            <!-- Horizontal LinearLayout to place rating beside the username -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/player1Label"
+                    android:layout_width="104dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Player 1"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/player1RatingLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="16sp"
+                    android:gravity="start"
+                    android:layout_marginStart="8dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/topTimerFrameLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end|center_vertical"
+            android:layout_gravity="bottom">
+
+            <TextView
+                android:id="@+id/topTimerTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="30sp"
+                android:gravity="end|center_vertical" />
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+
+    <!-- Chessboard Layout -->
+    <GridLayout
+        android:id="@+id/chessboard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:columnCount="8"
+        android:rowCount="8"
+        app:layout_constraintTop_toBottomOf="@+id/topLinearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/bottomLinearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Bottom Linear Layout with Timer TextView -->
+    <LinearLayout
+        android:id="@+id/bottomLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="140sp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Horizontal LinearLayout for username and rating -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/player2Label"
+                    android:layout_width="104dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Player 2"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/player2RatingLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="16sp"
+                    android:gravity="start"
+                    android:layout_marginStart="8dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/whiteTakenPiecesLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="40sp"
+                android:layout_marginTop="12sp"
+                android:gravity="start"
+                android:orientation="horizontal" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/bottomTimerFrameLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end|center_vertical"
+            android:layout_gravity="top">
+
+            <TextView
+                android:id="@+id/bottomTimerTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="30sp"
+                android:gravity="end|center_vertical" />
+        </FrameLayout>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/iconLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/light_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/menu"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="1"
+            android:src="@drawable/baseline_menu_24" />
+
+        <ImageView
+            android:id="@+id/flipIcon"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="1"
+            android:src="@drawable/baseline_flip_camera_android_24" />
+
+        <ImageView
+            android:id="@+id/chatIcon"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="1"
+            android:src="@drawable/baseline_chat_24" />
+        <ImageView
+            android:id="@+id/icon3"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="1"
+            android:src="@drawable/baseline_arrow_back_ios_24" />
+
+        <ImageView
+            android:id="@+id/icon4"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="1"
+            android:src="@drawable/baseline_arrow_forward_ios_24" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

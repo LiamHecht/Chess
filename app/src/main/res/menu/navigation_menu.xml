@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:ignore="HardcodedText">
+    <group>
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/baseline_home_24"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/baseline_account_circle_24"
+            android:title="Profile" />
+
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/baseline_settings_24"
+            android:title="Settings" />
+        <item
+            android:id="@+id/nav_players"
+            android:icon="@drawable/baseline_people_24"
+            android:title="Active Players" />
+        <item
+            android:id="@+id/nav_leaderBoard"
+            android:icon="@drawable/baseline_leaderboard_24"
+            android:title="LeaderBoard" />
+        <item
+            android:id="@+id/nav_localHistory"
+            android:icon="@drawable/baseline_history_24"
+            android:title="Local History" />
+        <item
+            android:id="@+id/nav_onlineHistory"
+            android:icon="@drawable/baseline_history_24"
+            android:title="Online History" />
+    </group>
+
+</menu>
