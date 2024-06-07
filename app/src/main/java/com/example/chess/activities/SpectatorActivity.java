@@ -31,62 +31,62 @@ import java.net.Socket;
 
 public class SpectatorActivity extends BaseChess {
 
-    private Socket socket;
-    private BufferedReader in;
-    private PrintWriter out;
+    private Socket socket; // Socket for network communication
+    private BufferedReader in; // BufferedReader for reading data from the socket
+    private PrintWriter out; // PrintWriter for writing data to the socket
 
-    private String username;
-    private boolean isCreatorWhite;
+    private String username; // Username of the spectator
+    private boolean isCreatorWhite; // Flag indicating if the creator is playing with white pieces
 
-    private String player1;
-    private String player2;
+    private String player1; // Name of the first player
+    private String player2; // Name of the second player
 
-    private TextView player1RatingLabel;
-    private TextView player2RatingLabel;
+    private TextView player1RatingLabel; // TextView to display the rating of the first player
+    private TextView player2RatingLabel; // TextView to display the rating of the second player
+
+    private final String serverIP = "35.246.192.221"; // IP address of the server
+    private final int serverPort = 8080; // Port number of the server
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onlinegame);
 
-        chessBoard = new Board();
+        chessBoard = new Board(); // Initialize the chess board
 
+        // Retrieve color settings from shared preferences
         sharedPreferences = getSharedPreferences("ChessSettings", MODE_PRIVATE);
         whiteSideSquareColor = sharedPreferences.getInt("whiteSideSquareColor", Color.parseColor("#FFFFFF"));
         blackSideSquareColor = sharedPreferences.getInt("blackSideSquareColor", Color.parseColor("#E0E0E0"));
         availableMovesColor = sharedPreferences.getInt("availableMovesColor", Color.parseColor("#ADD8E6"));
         selectedPieceColor = sharedPreferences.getInt("selectedPieceColor", Color.parseColor("#FF7F7F"));
 
+        // Retrieve player information from intent extras
         username = getIntent().getStringExtra("username");
-        //player 1 is always the creator
         player1 = getIntent().getStringExtra("player1");
         player2 = getIntent().getStringExtra("player2");
 
         isCreatorWhite = getIntent().getBooleanExtra("isCreatorWhite", true);
 
+        // Initialize UI components
         topTimerTextView = findViewById(R.id.topTimerTextView);
         bottomTimerTextView = findViewById(R.id.bottomTimerTextView);
-
         player1Label = findViewById(R.id.player1Label);
         player2Label = findViewById(R.id.player2Label);
-
         player1RatingLabel = findViewById(R.id.player1RatingLabel);
         player2RatingLabel = findViewById(R.id.player2RatingLabel);
-
         topFrame = findViewById(R.id.topTimerFrameLayout);
         bottomFrame = findViewById(R.id.bottomTimerFrameLayout);
-
         chessboardLayout = findViewById(R.id.chessboard);
         whiteTakenPiecesLayout = findViewById(R.id.whiteTakenPiecesLayout);
         blackTakenPiecesLayout = findViewById(R.id.blackTakenPiecesLayout);
 
+        // Initialize timers
         whitePlayerTimer = new GameTimer(bottomTimerTextView);
         blackPlayerTimer = new GameTimer(topTimerTextView);
-        Log.e("player1", player1);
-        Log.e("player2", player2);
 
-        if (isCreatorWhite){
-
+        // Set player labels based on creator's color
+        if (isCreatorWhite) {
             player2Label.setText(player1);
             player1Label.setText(player2);
         } else {
@@ -96,11 +96,11 @@ public class SpectatorActivity extends BaseChess {
 
         initializeLayout();
         initializeChessboard();
-        initiateConnection();
+        initiateConnection(); // Initiate the connection to the server
 
+        // Hide the iconLinearLayout
         LinearLayout iconLinearLayout = findViewById(R.id.iconLinearLayout);
-        iconLinearLayout.setVisibility(View.GONE); // Hide the iconLinearLayout
-
+        iconLinearLayout.setVisibility(View.GONE);
     }
 
     @Override
@@ -215,7 +215,7 @@ public class SpectatorActivity extends BaseChess {
     private void initiateConnection() {
         new Thread(() -> {
             try {
-                Socket socket = new Socket("10.0.2.2", 8080);
+                Socket socket = new Socket(serverIP, serverPort);
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 out = new PrintWriter(socket.getOutputStream(), true);
 

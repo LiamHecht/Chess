@@ -82,7 +82,8 @@ public class OnlineGameActivity extends BaseChess {
     private Queue<String> messageQueue = new LinkedList<>();
     private List<String> sentMessages = new ArrayList<>();
 
-
+    private final String serverIP = "35.246.192.221";
+    private final int serverPort = 8080;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -400,7 +401,7 @@ public class OnlineGameActivity extends BaseChess {
         new Thread(() -> {
             try {
 //                Socket socket = new Socket("35.234.99.17", 8080);
-                Socket socket = new Socket("10.0.2.2", 8080);
+                Socket socket = new Socket(serverIP, serverPort);
 
                 in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 out = new PrintWriter(socket.getOutputStream(), true);
