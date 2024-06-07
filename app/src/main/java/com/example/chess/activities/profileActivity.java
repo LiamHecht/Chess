@@ -262,7 +262,7 @@ public class profileActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                finish();
+                startActivity(new Intent(profileActivity.this, MenuActivity.class));
             }
         }, 2000);
     }
