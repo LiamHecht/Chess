@@ -365,18 +365,23 @@ public class Board {
     }
 
     public boolean isKingInCheck(boolean isWhite) {
+        // Find the spot of the king of the specified color
         Spot kingSpot = findKing(isWhite);
+
+        // Iterate over all spots on the chessboard
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 Spot spot = boxes[i][j];
+                // Check if the spot has an opponent's piece
                 if (spot.getPiece() != null && spot.getPiece().isWhite() != isWhite) {
+                    // Check if this opponent's piece can move to the king's spot
                     if (isValidMove(spot, kingSpot)) {
-                        return true;
+                        return true; // The king is in check
                     }
                 }
             }
         }
-        return false;
+        return false; // The king is not in check
     }
 
     public Spot findKing(boolean isWhite) {
@@ -389,7 +394,7 @@ public class Board {
                 }
             }
         }
-        return null;
+        return null;// Return null if no king is found (should not happen in a valid game)
     }
     private boolean isPathClear(Spot sourceSpot, Spot destinationSpot) {
         PieceType pieceType = sourceSpot.getPiece().getType();
@@ -398,20 +403,24 @@ public class Board {
 
         switch (pieceType) {
             case PAWN:
+                // Special case for pawn's double move
                 if (deltaX == 0 && deltaY == 2) { // Double move
                     return isPathClearPawnDoubleMove(sourceSpot, destinationSpot);
                 }
             case ROOK:
+                // Rook moves horizontally or vertically
                 if ((deltaX > 0 && deltaY == 0) || (deltaY > 0 && deltaX == 0)) {
                     return isPathClearHorizontal(sourceSpot, destinationSpot) || isPathClearVertical(sourceSpot, destinationSpot);
                 }
             case BISHOP:
+                // Bishop moves diagonally
                 if (deltaX == deltaY) {
                     return isPathClearDiagonal(sourceSpot, destinationSpot);
                 }
                 break;
 
             case QUEEN:
+                // Queen moves horizontally, vertically, or diagonally
                 if ((deltaX > 0 && deltaY == 0) || (deltaY > 0 && deltaX == 0)) {
                     return isPathClearHorizontal(sourceSpot, destinationSpot) || isPathClearVertical(sourceSpot, destinationSpot);
                 } else if (deltaX == deltaY) {
@@ -420,6 +429,7 @@ public class Board {
                 break;
 
             case KNIGHT:
+                // Knight's path is always clear since it jumps over pieces
                 return true;
 
             default:
@@ -567,27 +577,35 @@ public class Board {
         return false;
     }
     public boolean performCastling(int kingX, int kingY, boolean isKingSide) {
+        // Check if castling is allowed
         if (!canCastle(kingX, kingY, isKingSide)) {
-            return false;
+            return false; // Castling not allowed
         }
 
-        int kingFinalY = isKingSide ? 6 : 2;
-        int rookFinalY = isKingSide ? 5 : 3;
+        // Determine the final positions for the king and rook based on the castling side
+        int kingFinalY = isKingSide ? 6 : 2; // King moves two squares to the right for king-side, or to the left for queen-side
+        int rookFinalY = isKingSide ? 5 : 3; // Rook moves next to the king
 
+        // Get the king piece from its initial position
         Piece kingPiece = boxes[kingX][kingY].getPiece();
-        if (!(kingPiece instanceof King)) return false;
+        if (!(kingPiece instanceof King)) return false; // Ensure the piece is indeed a king
         King king = (King) kingPiece;
 
+        // Move the king to its final position
         boxes[kingX][kingFinalY].setPiece(king);
-        boxes[kingX][kingY].setPiece(null);
-        king.setMoved(true);
+        boxes[kingX][kingY].setPiece(null); // Clear the king's initial position
+        king.setMoved(true); // Mark the king as having moved
 
+        // Get the rook piece from its initial position
         Rook rook = (Rook) boxes[kingX][isKingSide ? 7 : 0].getPiece();
+        // Move the rook to its final position
         boxes[kingX][rookFinalY].setPiece(rook);
-        boxes[kingX][isKingSide ? 7 : 0].setPiece(null);
-        rook.setMoved(true);
+        boxes[kingX][isKingSide ? 7 : 0].setPiece(null); // Clear the rook's initial position
+        rook.setMoved(true); // Mark the rook as having moved
+
+        // Switch the turn to the other player
         isWhite = !isWhite;
-        return true;
+        return true; // Castling performed successfully
     }
     public boolean isEnPassant(int startX, int startY, int endX, int endY) {
         Spot movingPawnSpot = boxes[startX][startY];

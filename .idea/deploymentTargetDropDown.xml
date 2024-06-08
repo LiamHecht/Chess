@@ -4,29 +4,27 @@
     <value>
       <entry key="app">
         <State>
-          <runningDeviceTargetSelectedWithDropDown>
+          <multipleDevicesSelectedInDropDown value="true" />
+          <targetsSelectedWithDialog>
             <Target>
-              <type value="RUNNING_DEVICE_TARGET" />
+              <type value="QUICK_BOOT_TARGET" />
               <deviceKey>
                 <Key>
-                  <type value="SERIAL_NUMBER" />
-                  <value value="RF8M74PQWET" />
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\liamh\.android\avd\Pixel_8_API_30_2.avd" />
                 </Key>
               </deviceKey>
             </Target>
-          </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-06-07T17:02:10.595988700Z" />
-          <runningDeviceTargetsSelectedWithDialog>
             <Target>
-              <type value="RUNNING_DEVICE_TARGET" />
+              <type value="QUICK_BOOT_TARGET" />
               <deviceKey>
                 <Key>
-                  <type value="SERIAL_NUMBER" />
-                  <value value="RF8M74PQWET" />
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\liamh\.android\avd\Pixel_8_API_30.avd" />
                 </Key>
               </deviceKey>
             </Target>
-          </runningDeviceTargetsSelectedWithDialog>
+          </targetsSelectedWithDialog>
         </State>
       </entry>
     </value>

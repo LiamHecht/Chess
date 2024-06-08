@@ -82,7 +82,7 @@ public class OnlineGameActivity extends BaseChess {
     private Queue<String> messageQueue = new LinkedList<>();
     private List<String> sentMessages = new ArrayList<>();
 
-    private final String serverIP = "35.246.192.221";
+    private final String serverIP = "10.0.2.2";
     private final int serverPort = 8080;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

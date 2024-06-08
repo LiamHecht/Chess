@@ -88,7 +88,7 @@ public class OnlineHistoryActivity extends AppCompatActivity {
         divider.setBackgroundColor(getResources().getColor(R.color.light_black));
         divider.setLayoutParams(new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, 1));
 
-        tableLayout.addView(divider);  // Add the divider to the TableLayout
+        tableLayout.addView(divider);
 
         // Create a review "link" using TextView
         TextView reviewTextView = createClickableTextView("Review", new View.OnClickListener() {
