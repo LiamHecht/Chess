@@ -84,6 +84,8 @@ public class OnlineGameActivity extends BaseChess {
 
     private final String serverIP = "10.0.2.2";
     private final int serverPort = 8080;
+    private boolean handleGameOverExecuted = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -317,12 +319,39 @@ public class OnlineGameActivity extends BaseChess {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//        killConnection();
-        // Perform any actions you want when this activity is closed
-        Log.d("AppLifecycle", username);
-        if (!isGameOver){
+        endGameByDisconnect();
+    }
+    private void endGameByDisconnect(){
+        sendForfeit();
+        firebaseUtils.fetchUserRating(currentUser, currentRating -> {
+            firebaseUtils.fetchUserGames(currentUser, currentGames -> {
+
+                int updatedRating = currentRating - 10; // Decrement for a loss
+
+                int updatedGames = (currentGames != null) ? currentGames + 1 : 1;
+                Map<String, Object> credentialsToUpdate = new HashMap<>();
+                credentialsToUpdate.put("rating", updatedRating);
+                credentialsToUpdate.put("games", updatedGames);
+
+                // Update the user's rating and games
+                firebaseUtils.updateCredentials(currentUser, credentialsToUpdate, isUpdated -> {
+                    if (isUpdated) {
+                        showToast("User's credentials updated successfully.");
+                    } else {
+                        showToast("Error updating user's credentials.");
+                    }
+                });
+            });
+        });
+    }
+
+    @Override
+    public void finish() {
+        if (!handleGameOverExecuted) {
             handleGameOver("lose", opponentUsername, isWhitePlayer);
+            handleGameOverExecuted = true;
         }
+        super.finish();
     }
 
     public void openMenu(){
@@ -934,7 +963,6 @@ public class OnlineGameActivity extends BaseChess {
 
     }
     protected void handleGameOver(String result, String opponent, Boolean isWhite) {
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser == null) {
             showToast("Error: User not found.");
             return;
